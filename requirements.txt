@@ -1,8 +1,8 @@
-langgraph
-langchain-openai
-python-dotenv
-openai
-pillow
-mcp
-pydantic
+mcp==1.30.0
+langgraph==1.2.11
+langchain-openai==1.6.7
+openai==2.54.0
+pydantic==2.13.5
+pillow==11.1.0
+python-dotenv==1.2.4
 streamlit
