@@ -2,9 +2,16 @@ import asyncio
 import sys
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
+import os
 
-SERVER = StdioServerParameters(command=sys.executable, args=["mcp_server.py"])
+HERE = os.path.dirname(os.path.abspath(__file__))
 
+SERVER = StdioServerParameters(
+    command=sys.executable,
+    args=[os.path.join(HERE, "mcp_server.py")],
+    env=dict(os.environ),  # pass the API key and settings to the server
+    cwd=HERE,              # run the server from the project folder
+)
 # ---------- 1. Get tool schemas from the server ----------
 async def _list_tools():
     async with stdio_client(SERVER) as (read, write):
